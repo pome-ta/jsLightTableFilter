@@ -1,3 +1,31 @@
 @charset "utf-8";
 @import url("./styleChecker.css");
 
+.container {
+  text-align: center;
+  overflow: hidden;
+  /*width: 600px;*/
+  margin: 0 auto;
+}
+
+.container table {
+  width: 100%;
+}
+
+.container td, .container th {
+  padding: 0.8rem;
+}
+
+.container td:first-child, .container th:first-child {
+  padding-left: 1rem;
+}
+
+.container td:last-child, .container th:last-child {
+  padding-right: 2rem;
+}
+
+.container th {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
