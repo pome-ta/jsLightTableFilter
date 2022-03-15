@@ -7,7 +7,7 @@
 ## 参照サイト
 
 
-[table内をテキスト検索して該当キーワードを持つ列を表示する | http://kachibito.net](http://kachibito.net/snippets/light-javascript-table-filter)
+[table内をテキスト検索して該当キーワードを持つ列を表示する | kachibito.net](http://kachibito.net/snippets/light-javascript-table-filter)
 
 
 [codepen.io/kachibito](https://codepen.io/kachibito/pen/LoLxLj)
