@@ -1,6 +1,7 @@
 'use strict';
 
-(function(document) {
+//(function(document) {
+console.log('ho');
 
   let LightTableFilter = (function(Arr) {
 
@@ -33,9 +34,10 @@
 
   document.addEventListener('readystatechange', function() {
     if (document.readyState === 'complete') {
+      console.log('1');
       LightTableFilter.init();
     }
-  });
+  })();
 
-})(document);
+//})(document);
 
