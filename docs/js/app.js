@@ -1,7 +1,6 @@
 'use strict';
 
-//(function(document) {
-console.log('ho');
+// (function(document) {
 
   let LightTableFilter = (function(Arr) {
 
@@ -38,6 +37,7 @@ console.log('ho');
       LightTableFilter.init();
     }
   })();
+  // });
 
-//})(document);
+// })(document);
 
