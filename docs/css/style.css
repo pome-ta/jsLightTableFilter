@@ -28,19 +28,26 @@ input {
 }
 
 .container td, .container th {
-  padding: 0.8rem;
+  padding: 0.4rem;
 }
 
 .container td:first-child, .container th:first-child {
-  padding-left: 0.4rem;
+  padding-left: 0.2rem;
 }
 
 .container td:last-child, .container th:last-child {
-  padding-right: 2rem;
+  padding-right: 0.2rem;
 }
 
 .container th {
   border-bottom: 1px solid #ddd;
   position: relative;
+}
+
+td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
 }
 

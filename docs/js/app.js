@@ -26,7 +26,8 @@ let LightTableFilter = (function (Arr) {
       });
     }
   };
-})(Array.prototype);
+//})(Array.prototype);
+})(new Array());  // xxx: これ大丈夫？
 
 document.addEventListener('readystatechange', function () {
   if (document.readyState === 'complete') {
@@ -48,13 +49,16 @@ fetch(data_path)
   .then(json_data => {
     //console.log('fetc');
     let inner = convertTable(jsonDump(json_data));
-    const ele = document.createElement('div');
-    ele.classList.add('container');
-    ele.innerHTML = inner;
-    document.body.appendChild(ele);
+    setTabel(inner);
+    
   });
 
-
+function setTabel(inner) {
+  const ele = document.createElement('div');
+  ele.classList.add('container');
+  ele.innerHTML = inner;
+  document.body.appendChild(ele);
+}
 
 function jsonDump(raw_json) {
   const header = Object.keys(raw_json[0]);
