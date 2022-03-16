@@ -52,5 +52,10 @@ fetch(data_path)
   .then(res => res.json())
   .then(json_data => {
     //console.log(json_data);
-    let x = 1;
+    jsonDump(json_data)
   });
+
+
+function jsonDump(raw_json) {
+  console.log(raw_json);
+}
