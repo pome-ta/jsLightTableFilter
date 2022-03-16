@@ -57,5 +57,10 @@ fetch(data_path)
 
 
 function jsonDump(raw_json) {
-  console.log(raw_json);
+  //console.log(raw_json);
+  const ele = document.createElement('div');
+  for (let person_data of raw_json) {
+    ele.innerHTML += person_data;
+  }
+  document.body.appendChild(ele);
 }
