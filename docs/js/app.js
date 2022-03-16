@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('top');
+//console.log('top');
 
 let LightTableFilter = (function (Arr) {
   console.log(Arr);
@@ -33,9 +33,9 @@ let LightTableFilter = (function (Arr) {
 })(Array.prototype);
 
 document.addEventListener('readystatechange', function () {
-  console.log('readystatechange');
+  //console.log('readystatechange');
   if (document.readyState === 'complete') {
-    console.log('complete');
+    //console.log('complete');
     LightTableFilter.init();
   }
 });
@@ -51,5 +51,6 @@ const data_path = new URL('./data/dummy.json', location.protocol + '//' + locati
 fetch(data_path)
   .then(res => res.json())
   .then(json_data => {
-    console.log(json_data);
+    //console.log(json_data);
+    let x = 1;
   });
