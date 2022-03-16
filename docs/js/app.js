@@ -59,8 +59,23 @@ fetch(data_path)
 function jsonDump(raw_json) {
   //console.log(raw_json);
   const ele = document.createElement('div');
+  
+  const header = Object.keys(raw_json[0]);//.keys();
+  const json_array = new Array();
+  json_array.push(header)
+  // xxx: `for` で回さんでもいけるやろ 😡
   for (let person_data of raw_json) {
+    //console.log(person_data);
+    json_array.push(Object.values(person_data));
     ele.innerHTML += person_data;
   }
   document.body.appendChild(ele);
+  console.log(json_array);
 }
+
+function convertTable(arr) {
+  for (let row of arr) {
+    console.log(row);
+  }
+}
+
