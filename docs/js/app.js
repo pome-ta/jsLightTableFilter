@@ -55,6 +55,21 @@ fetch(data_path)
     
   });
 
+
+const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
+
+const dataGrid_path = new URL('./data/gridDummy.json', location.protocol + '//' + location.host + location.pathname).href;
+
+fetch(dataGrid_path)
+  .then(res => res.json())
+  .then(json_data => {
+    const grid = jsonDump(json_data);
+    console.log(grid);
+  });
+
+
+
+
 function setTabel(inner) {
   const ele = document.createElement('div');
   ele.classList.add('container');
