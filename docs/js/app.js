@@ -1,13 +1,13 @@
 'use strict';
 
 
-let LightTableFilter = (function (Arr) {
+let LightTableFilter = ((Arr) =>  {
   let _input;
   function _onInputEvent(e) {
     _input = e.target;
     let tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-    Arr.forEach.call(tables, function (table) {
-      Arr.forEach.call(table.tBodies, function (tbody) {
+    Arr.forEach.call(tables, (table) =>  {
+      Arr.forEach.call(table.tBodies, (tbody) => {
         Arr.forEach.call(tbody.rows, _filter);
       });
     });
@@ -20,9 +20,9 @@ let LightTableFilter = (function (Arr) {
   }
 
   return {
-    init: function () {
+    init: () => {
       let inputs = document.getElementsByClassName('light-table-filter');
-      Arr.forEach.call(inputs, function (input) {
+      Arr.forEach.call(inputs, (input) => {
         input.oninput = _onInputEvent;
       });
     }
@@ -30,7 +30,7 @@ let LightTableFilter = (function (Arr) {
 //})(Array.prototype);
 })(new Array());  // xxx: これ大丈夫？
 
-document.addEventListener('readystatechange', function () {
+document.addEventListener('readystatechange', () => {
   if (document.readyState === 'complete') {
     //console.log('complete');
     LightTableFilter.init();
