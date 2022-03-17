@@ -64,10 +64,29 @@ fetch(dataGrid_path)
   .then(res => res.json())
   .then(json_data => {
     const grid = jsonDump(json_data);
-    console.log(grid);
+    //console.log(typeof grid);
+    let parse = jsonParse(grid);
+    setConvert(parse);
+    //console.log(parse);
   });
 
 
+
+function jsonParse(raw) {
+  let json = new Array();
+  for (let data of raw) {
+    json.push(Object.values(data));
+  }
+  return json.slice(1);
+}
+
+function setConvert(array) {
+  let itu = new Array();
+  for (let data of array) {
+    let fav = faviconUrl(data[1]);
+    console.log(fav);
+  }
+}
 
 
 function setTabel(inner) {
