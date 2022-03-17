@@ -20,7 +20,7 @@ let LightTableFilter = ((Arr) =>  {
   }
 
   return {
-    init: () => {
+    init: function () {
       let inputs = document.getElementsByClassName('light-table-filter');
       Arr.forEach.call(inputs, (input) => {
         input.oninput = _onInputEvent;
