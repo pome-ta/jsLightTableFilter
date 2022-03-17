@@ -54,9 +54,10 @@ td {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 8fr;
-  grid-template-rows   : 8fr 6fr;
-  grid-template-areas  : "icon title"
-                         "icon  url";
+  grid-template-rows : 8fr 6fr;
+  grid-template-areas :
+    "icon title"
+    "icon url";
 }
 .icon {
   grid-area: icon;
