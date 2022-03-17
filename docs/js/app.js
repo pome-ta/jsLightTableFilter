@@ -3,6 +3,7 @@
 
 let LightTableFilter = ((Arr) =>  {
   let _input;
+  
   function _onInputEvent(e) {
     _input = e.target;
     let tables = document.getElementsByClassName(_input.getAttribute('data-table'));
