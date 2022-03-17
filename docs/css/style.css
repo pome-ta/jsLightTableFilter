@@ -51,4 +51,22 @@ td {
   max-width: 0;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows : 8fr 6fr;
+  grid-template-areas :
+    "icon title"
+    "icon url";
+}
+.icon {
+  grid-area: icon;
+}
+.title {
+  grid-area: title;
+}
+.url {
+  grid-area: url;
+}
+
 
