@@ -64,7 +64,6 @@ fetch(dataGrid_path)
   .then(res => res.json())
   .then(json_data => {
     const grid = jsonDump(json_data);
-    //console.log(typeof grid);
     let parse = jsonParse(grid);
     setConvert(parse);
     //console.log(parse);
