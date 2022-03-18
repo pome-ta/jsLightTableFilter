@@ -59,6 +59,12 @@ td {
     "icon title"
     "icon url";
 }
+.griditem {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  /*max-width: 0;*/
+}
 .icon {
   grid-area: icon;
 }

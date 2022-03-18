@@ -51,7 +51,7 @@ fetch(data_path)
   .then(json_data => {
     //console.log('fetc');
     let inner = convertTable(jsonDump(json_data));
-    setTabel(inner);
+    setHTML(inner);
     
   });
 
@@ -64,9 +64,8 @@ fetch(dataGrid_path)
   .then(res => res.json())
   .then(json_data => {
     const grid = jsonDump(json_data);
-    let parse = jsonParse(grid);
-    setConvert(parse);
-    //console.log(parse);
+    let parse = convertGrid(grid);
+    setHTML(parse);
   });
 
 
@@ -83,12 +82,30 @@ function setConvert(array) {
   let itu = new Array();
   for (let data of array) {
     let fav = faviconUrl(data[1]);
-    console.log(fav);
+    let newdata = [fav, ...data];
+    itu.push(newdata);
   }
+  return itu;
 }
 
 
-function setTabel(inner) {
+function convertGrid(raw_json) {
+
+  let json_array = setConvert(jsonParse(raw_json));
+  let inner = '';
+  //console.log(json_array);
+  for (let data of json_array) {
+    inner += '<div class="wrapper">';
+    inner += `<div class="icon griditem"><img src="${data[0]}"></div>`;
+    inner += `<div class="title griditem">${data[1]}</div>`;
+    inner += `<div class="url griditem">${data[2]}</div>`;
+    inner += '</div>';
+  }
+  return inner;
+}
+
+
+function setHTML(inner) {
   const ele = document.createElement('div');
   ele.classList.add('container');
   ele.innerHTML = inner;
