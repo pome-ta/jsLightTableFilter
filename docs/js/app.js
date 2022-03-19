@@ -7,11 +7,19 @@ class myLightTableFilter {
     this.container = null;
     this.inputs = null;
     this.tables = null;
-    this.createHTMLtags();
+    this._createHTMLtags();
 
   }
+  
+  init() {
+    this.inputs.oninput = this._onInputEvent;
+  }
+  
+  _onInputEvent(e) {
+    
+  }
 
-  createHTMLtags() {
+  _createHTMLtags() {
     // xxx: ドットで繋げていけるかな？
     // wrapper = document.createElement('div');
     // wrapper.classList.add('wrapper');
