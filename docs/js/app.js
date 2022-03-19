@@ -3,19 +3,36 @@
 
 class myLightTableFilter {
   constructor() {
-    let arr = new Array();
-    let wrapper = null;
-    let tables = null;
+    this.arr = new Array();
+    this.container = null;
+    this.inputs = null;
+    this.tables = null;
+    this.createHTMLtags();
+
   }
-  
+
   createHTMLtags() {
     // xxx: ドットで繋げていけるかな？
-    wrapper = document.createElement('div');
-    wrapper.classList.add('wrapper');
-    
-    
+    // wrapper = document.createElement('div');
+    // wrapper.classList.add('wrapper');
+
+    this.inputs = document.createElement('input');
+    this.inputs.classList.add('Light-table-filter');
+    this.inputs.setAttribute('type', 'search');
+    this.inputs.setAttribute('data-table', 'order-table');
+    this.inputs.setAttribute('placeholder', '検索');
+
+    this.container = document.createElement('section');
+    this.container.classList.add('container');
+    this.container.appendChild(this.inputs);
+
+    document.body.appendChild(this.container);
   }
 }
+
+
+new myLightTableFilter();
+
 
 let LightTableFilter = ((Arr) => {
   let _input;
