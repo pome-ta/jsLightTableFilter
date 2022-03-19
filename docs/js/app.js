@@ -1,13 +1,13 @@
 'use strict';
 
 
-let LightTableFilter = ((Arr) =>  {
+let LightTableFilter = ((Arr) => {
   let _input;
-  
+
   function _onInputEvent(e) {
     _input = e.target;
     let tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-    Arr.forEach.call(tables, (table) =>  {
+    Arr.forEach.call(tables, (table) => {
       Arr.forEach.call(table.tBodies, (tbody) => {
         Arr.forEach.call(tbody.rows, _filter);
       });
@@ -28,7 +28,7 @@ let LightTableFilter = ((Arr) =>  {
       });
     }
   };
-//})(Array.prototype);
+  //})(Array.prototype);
 })(new Array());  // xxx: これ大丈夫？
 
 document.addEventListener('readystatechange', () => {
@@ -52,7 +52,7 @@ fetch(data_path)
     //console.log('fetc');
     let inner = convertTable(jsonDump(json_data));
     setHTML(inner);
-    
+
   });
 
 
@@ -63,6 +63,9 @@ const dataGrid_path = new URL('./data/gridDummy.json', location.protocol + '//' 
 fetch(dataGrid_path)
   .then(res => res.json())
   .then(json_data => {
+    // const json = JSON.parse(json_data);
+    // console.log(typeof json_data);
+    // console.log(json_data);
     const grid = jsonDump(json_data);
     let parse = convertGrid(grid);
     setHTML(parse);
@@ -156,4 +159,12 @@ function get_tbodyTable(body) {
   return inner;
 }
 
+
+const sampleURI = new URL('./data/sample.json', location.protocol + '//' + location.host + location.pathname).href;
+fetch(sampleURI)
+  .then(res => res.json())
+  .then(json_data => {
+    console.log(json_data);
+    // console.log(JSON.parse(json_data));
+  });
 

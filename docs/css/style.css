@@ -16,7 +16,7 @@ input {
 }
 
 .container {
-  text-align: center;
+  /* text-align: center; */
   overflow: hidden;
   /*width: 600px;*/
   margin: 0 auto;
