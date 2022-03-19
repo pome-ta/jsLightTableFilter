@@ -1,6 +1,22 @@
 'use strict';
 
 
+class myLightTableFilter {
+  constructor() {
+    let arr = new Array();
+    let wrapper = null;
+    let tables = null;
+  }
+  
+  createHTMLtags() {
+    // xxx: ドットで繋げていけるかな？
+    wrapper = document.createElement('div');
+    wrapper.classList.add('wrapper');
+    
+    
+  }
+}
+
 let LightTableFilter = ((Arr) => {
   let _input;
 
@@ -38,10 +54,6 @@ document.addEventListener('readystatechange', () => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', main);
-function main() {
-  console.log('DOMContentLoaded');
-}
 
 
 const data_path = new URL('./data/dummy.json', location.protocol + '//' + location.host + location.pathname).href;
@@ -68,7 +80,7 @@ fetch(dataGrid_path)
     // console.log(json_data);
     const grid = jsonDump(json_data);
     let parse = convertGrid(grid);
-    setHTML(parse);
+    //setHTML(parse);
   });
 
 
@@ -164,7 +176,7 @@ const sampleURI = new URL('./data/sample.json', location.protocol + '//' + locat
 fetch(sampleURI)
   .then(res => res.json())
   .then(json_data => {
-    console.log(json_data);
+    //console.log(json_data);
     // console.log(JSON.parse(json_data));
   });
 
