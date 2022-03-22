@@ -12,7 +12,7 @@ async function res_json(uri) {
 ```
 
 
-``` .old
+``` old.js
 async function res_json(uri) {
   const res = await fetch(uri);
   const json_data = await res.json();
