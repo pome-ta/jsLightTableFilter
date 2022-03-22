@@ -1,3 +1,32 @@
+# 📝 2022/03/22
+
+json のオブジェクトをコネコネしたけど、設計これでいいのかな？メモリとか、爆食いしてる？
+
+``` new.js
+async function res_json(uri) {
+  const res = await fetch(uri);
+  const json_data = await res.json();
+  const json_array = [...json_data].map(data => Object.assign({'favicon': faviconUrl(data.url)}, data));
+  return json_array;
+}
+```
+
+
+``` .old
+async function res_json(uri) {
+  const res = await fetch(uri);
+  const json_data = await res.json();
+  for (let data of json_data) {
+    data.favicon = faviconUrl(data.url);
+  }
+  return json_data;
+}
+```
+
+
+まぁ、for文のインデントよりすっきり？
+
+
 # 📝 2022/03/21
 
 `old` とか作るのひどいけど、確認用として設置
