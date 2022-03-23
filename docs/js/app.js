@@ -36,31 +36,17 @@ function createElementAddClass(tag, name) {
   return element_obj;
 }
 
+// xxx: 可変長引数
 function createGridElement(grid_json) {
   const container = createElementAddClass('section', 'container');
-  document.body.appendChild(container);
+  const wrapper = createElementAddClass('div', 'wrapper');
   
   grid_json.forEach(data => {
-    for (const [key, value] of data.entries) {
-      console.log(value);
-    }
+    console.log(data);
   });
-  for (const data of grid_json) {
-    //const favicon, title, url = data;
-    //console.log(favicon);
-   // console.log(title);
-   // console.log(url);
-    
-    //console.log('hoge');
-    //console.log(data);
-    const wrap = document.createElement('div');
-    wrap.classList.add('wrap');
-    wrap.innerHTML = Object.values(data);
-    container.appendChild(wrap);
-  }
   
-  
-  
+  container.appendChild(wrapper)
+  document.body.appendChild(container);
 }
 
 createGridElement(json_obj);
