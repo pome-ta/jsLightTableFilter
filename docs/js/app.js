@@ -39,13 +39,23 @@ function createElementAddClass(tag, name) {
 // xxx: 可変長引数
 function createGridElement(grid_json) {
   const container = createElementAddClass('section', 'container');
-  const wrapper = createElementAddClass('div', 'wrapper');
+  
   
   grid_json.forEach(data => {
-    console.log(data);
+    const wrapper = createElementAddClass('div', 'wrapper');
+    for(const key of Object.keys(data)) {
+      const gridItem = createElementAddClass('div', 'griditem');
+      gridItem.classList.add(key);
+      gridItem.textContent = `${data[key]}`;
+      wrapper.appendChild(gridItem);
+      
+    }
+    //console.log(data);
+    container.appendChild(wrapper)
+    
   });
   
-  container.appendChild(wrapper)
+  
   document.body.appendChild(container);
 }
 
