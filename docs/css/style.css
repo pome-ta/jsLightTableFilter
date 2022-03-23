@@ -10,3 +10,28 @@ body {
     Meiryo,
     sans-serif;
 }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows : 8fr 6fr;
+  grid-template-areas :
+    "icon title"
+    "icon url";
+}
+.griditem {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  /*max-width: 0;*/
+}
+.icon {
+  grid-area: icon;
+}
+.title {
+  grid-area: title;
+}
+.url {
+  grid-area: url;
+}
+ 

@@ -36,8 +36,11 @@ function createElementAddClass(tag, name) {
   return element_obj;
 }
 
-// xxx: 可変長引数
+
+
+
 function createGridElement(grid_json) {
+  // xxx: 可変長引数
   const container = createElementAddClass('section', 'container');
   
   
@@ -46,7 +49,25 @@ function createGridElement(grid_json) {
     for(const key of Object.keys(data)) {
       const gridItem = createElementAddClass('div', 'griditem');
       gridItem.classList.add(key);
-      gridItem.textContent = `${data[key]}`;
+      
+      // xxx: switch やだなー
+      let content = null;
+      switch (key) {
+        case 'favicon':
+          content = `<img src="${data[key]}">`;
+          break;
+        case 'title':
+          content = `<a href="${data.url}">${data[key]}</a>`;
+          break;
+        case 'url':
+          content = `${data[key]}`;
+          break;
+        default:
+          content = null;
+      }
+      
+      //gridItem.textContent = `${data[key]}`;
+      gridItem.innerHTML = content;
       wrapper.appendChild(gridItem);
       
     }
