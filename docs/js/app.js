@@ -25,7 +25,7 @@ const json_path = './data/gridDummy.json';
 const dataGrid_path = get_path(json_path);
 
 const json_data = await res_json(dataGrid_path);
-// xxx: 無駄が多いかしら？
+// xxx: メモリ無駄が多いかしら？
 const json_obj = [...json_data].map(data => Object.assign({'favicon': faviconUrl(data.url)}, data));
 
 
