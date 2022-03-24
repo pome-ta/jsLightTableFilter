@@ -13,6 +13,24 @@ const get_path = (path) => {
 
 const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
 
+//const sheetUrl = 'https://docs.google.com/spreadsheets/u/0/d/1Mlo1DakWK_3gzYZhSN2YtAlMVbV4KyPxi-df-hsaIKM/htmlview?hl=JA';
+const sheetUrl = 'https://docs.google.com/';
+
+
+// https://ja.javascript.info/url
+function urlParse(urlstr) {
+  const urlBase = new URL(urlstr);
+  const origin = urlBase.origin;
+  const [, s, ..._] = urlBase.pathname.split('/');
+  const url = [origin, s].join('/');
+  console.log(s);
+  console.log(url);
+}
+
+
+urlParse(sheetUrl);
+
+
 async function res_json(uri) {
   const res = await fetch(uri);
   const json_data = await res.json();
