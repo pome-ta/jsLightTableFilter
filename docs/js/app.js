@@ -11,10 +11,10 @@ const get_path = (path) => {
   return new URL(path, _location).href;
 }
 
-const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
+const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${urlParse(url)}`;
 
 //const sheetUrl = 'https://docs.google.com/spreadsheets/u/0/d/1Mlo1DakWK_3gzYZhSN2YtAlMVbV4KyPxi-df-hsaIKM/htmlview?hl=JA';
-const sheetUrl = 'https://docs.google.com/';
+//const sheetUrl = 'https://docs.google.com/';
 
 
 // https://ja.javascript.info/url
@@ -23,12 +23,11 @@ function urlParse(urlstr) {
   const origin = urlBase.origin;
   const [, s, ..._] = urlBase.pathname.split('/');
   const url = [origin, s].join('/');
-  console.log(s);
-  console.log(url);
+  return url;
 }
 
 
-urlParse(sheetUrl);
+//urlParse(sheetUrl);
 
 
 async function res_json(uri) {
@@ -48,25 +47,22 @@ const json_obj = [...json_data].map(data => Object.assign({'favicon': faviconUrl
 
 
 
-function createElementAddClass(tag, name) {
+function createElementAddClass(tag, ...names) {
   const element_obj = document.createElement(tag);
-  element_obj.classList.add(name);
+  for (const name of names){
+    element_obj.classList.add(name);
+  }
   return element_obj;
 }
 
 
 
-
 function createGridElement(grid_json) {
-  // xxx: 可変長引数
   const container = createElementAddClass('section', 'container');
-  
-  
   grid_json.forEach(data => {
     const wrapper = createElementAddClass('div', 'wrapper');
     for(const key of Object.keys(data)) {
-      const gridItem = createElementAddClass('div', 'griditem');
-      gridItem.classList.add(key);
+      const gridItem = createElementAddClass('div', 'griditem', key);
       
       // xxx: switch やだなー
       let content = null;
@@ -83,8 +79,6 @@ function createGridElement(grid_json) {
         default:
           content = null;
       }
-      
-      //gridItem.textContent = `${data[key]}`;
       gridItem.innerHTML = content;
       wrapper.appendChild(gridItem);
       

@@ -11,6 +11,11 @@ body {
     sans-serif;
 }
 
+img {
+object-fit: contain;
+
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 8fr;
