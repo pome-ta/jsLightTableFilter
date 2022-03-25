@@ -13,9 +13,6 @@ const get_path = (path) => {
 
 const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${urlParse(url)}`;
 
-//const sheetUrl = 'https://docs.google.com/spreadsheets/u/0/d/1Mlo1DakWK_3gzYZhSN2YtAlMVbV4KyPxi-df-hsaIKM/htmlview?hl=JA';
-//const sheetUrl = 'https://docs.google.com/';
-
 
 // https://ja.javascript.info/url
 function urlParse(urlstr) {
@@ -25,9 +22,6 @@ function urlParse(urlstr) {
   const url = [origin, s].join('/');
   return url;
 }
-
-
-//urlParse(sheetUrl);
 
 
 async function res_json(uri) {
@@ -43,6 +37,8 @@ const dataGrid_path = get_path(json_path);
 
 const json_data = await res_json(dataGrid_path);
 // xxx: メモリ無駄が多いかしら？
+//const json_obj = [...json_data].map(data => Object.assign({'favicon': faviconUrl(data.url)}, data));
+// xxx: ギガ死なない対策
 const json_obj = [...json_data].map(data => Object.assign({'favicon': faviconUrl(data.url)}, data));
 
 
@@ -56,12 +52,14 @@ function createElementAddClass(tag, ...names) {
 }
 
 
-// xxx: class ？
+// xxx: class化 ？
 function createGridElement(grid_json) {
   const inputs = createElementAddClass('input', 'Light-table-filter');
   inputs.setAttribute('type', 'search');
   inputs.setAttribute('data-table', 'order-table');
   inputs.setAttribute('placeholder', '検索');
+  
+  const gridWrap= createElementAddClass('div', 'gridWrap');
 
   const container = createElementAddClass('section', 'container');
   grid_json.forEach(data => {
@@ -73,7 +71,8 @@ function createGridElement(grid_json) {
       let content = null;
       switch (key) {
         case 'favicon':
-          content = `<img src="${data[key]}">`;
+          //content = `<img src="${data[key]}">`;
+          content = `${data[key]}`;
           break;
         case 'title':
           content = `<a href="${data.url}">${data[key]}</a>`;
@@ -86,14 +85,12 @@ function createGridElement(grid_json) {
       }
       gridItem.innerHTML = content;
       wrapper.appendChild(gridItem);
-      
     }
-    //console.log(data);
-    container.appendChild(wrapper)
-    
+    gridWrap.appendChild(wrapper)
   });
   
-  document.body.appendChild(inputs);
+  container.appendChild(inputs);
+  container.appendChild(gridWrap);
   document.body.appendChild(container);
 }
 
