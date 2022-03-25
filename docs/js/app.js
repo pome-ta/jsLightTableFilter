@@ -56,8 +56,13 @@ function createElementAddClass(tag, ...names) {
 }
 
 
-
+// xxx: class ？
 function createGridElement(grid_json) {
+  const inputs = createElementAddClass('input', 'Light-table-filter');
+  inputs.setAttribute('type', 'search');
+  inputs.setAttribute('data-table', 'order-table');
+  inputs.setAttribute('placeholder', '検索');
+
   const container = createElementAddClass('section', 'container');
   grid_json.forEach(data => {
     const wrapper = createElementAddClass('div', 'wrapper');
@@ -88,7 +93,7 @@ function createGridElement(grid_json) {
     
   });
   
-  
+  document.body.appendChild(inputs);
   document.body.appendChild(container);
 }
 
