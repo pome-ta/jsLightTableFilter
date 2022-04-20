@@ -39,7 +39,7 @@ class myLightTableFilter {
     this.container = document.createElement('section');
     this.container.classList.add('container');
     this.container.appendChild(this.inputs);
-
+  
     document.body.appendChild(this.container);
     const data_path = new URL('./data/dummy.json', location.protocol + '//' + location.host + location.pathname).href;
     
