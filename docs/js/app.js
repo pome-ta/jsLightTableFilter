@@ -86,7 +86,7 @@ function createGridElement(grid_json) {
   container.appendChild(inputs);
   container.appendChild(gridWrap);
   document.body.appendChild(container);
-  console.log('hoge');
+  //console.log('hoge');
 }
 
 createGridElement(json_obj);
