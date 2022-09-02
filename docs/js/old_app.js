@@ -14,16 +14,13 @@ class myLightTableFilter {
     this._input = null;
     this._createHTMLtags();
     console.log('class');
-
   }
-  
+
   init() {
     this.inputs.oninput = this._onInputEvent;
   }
-  
-  _onInputEvent(e) {
-    
-  }
+
+  _onInputEvent(e) {}
 
   _createHTMLtags() {
     // xxx: ドットで繋げていけるかな？
@@ -39,34 +36,50 @@ class myLightTableFilter {
     this.container = document.createElement('section');
     this.container.classList.add('container');
     this.container.appendChild(this.inputs);
-  
+
     document.body.appendChild(this.container);
-    const data_path = new URL('./data/dummy.json', location.protocol + '//' + location.host + location.pathname).href;
-    
+    const data_path = new URL(
+      './data/dummy.json',
+      location.protocol + '//' + location.host + location.pathname
+    ).href;
+
     fetch(data_path)
-  .then(res => res.json())
-  .then(json_data => {
-    //console.log('fetc');
-    let inner = convertTable(jsonDump(json_data));
-    setHTML(inner);
-
-  });
-
-    
-    
+      .then((res) => res.json())
+      .then((json_data) => {
+        //console.log('fetc');
+        let inner = convertTable(jsonDump(json_data));
+        setHTML(inner);
+      });
   }
 }
 
+function myFilter(event) {
+  const target = event.target;
+  const searchStr = target.value.toLowerCase();
+  const searchFilter = (row) => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = ~text.indexOf(searchStr) ? 'table-row' : 'none';
+  };
+  const tables = document.getElementsByClassName(
+    target.getAttribute('data-table')
+  );
+  Array.prototype.forEach.call(tables, (table) => {
+    Array.prototype.forEach.call(table.tBodies, (tbody) => {
+      Array.prototype.forEach.call(tbody.rows, searchFilter);
+    });
+  });
+}
 
 new myLightTableFilter();
-
 
 let LightTableFilter = ((Arr) => {
   let _input;
 
   function _onInputEvent(e) {
     _input = e.target;
-    let tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+    let tables = document.getElementsByClassName(
+      _input.getAttribute('data-table')
+    );
     Arr.forEach.call(tables, (table) => {
       Arr.forEach.call(table.tBodies, (tbody) => {
         Arr.forEach.call(tbody.rows, _filter);
@@ -86,10 +99,10 @@ let LightTableFilter = ((Arr) => {
       Arr.forEach.call(inputs, (input) => {
         input.oninput = _onInputEvent;
       });
-    }
+    },
   };
   //})(Array.prototype);
-})(new Array());  // xxx: これ大丈夫？
+})(new Array()); // xxx: これ大丈夫？
 
 document.addEventListener('readystatechange', () => {
   if (document.readyState === 'complete') {
@@ -97,8 +110,6 @@ document.addEventListener('readystatechange', () => {
     LightTableFilter.init();
   }
 });
-
-
 
 //const data_path = new URL('./data/dummy.json', location.protocol + '//' + location.host + location.pathname).href;
 /*
@@ -112,13 +123,17 @@ fetch(data_path)
   });
 
 */
-const faviconUrl = (url) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
+const faviconUrl = (url) =>
+  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
 
-const dataGrid_path = new URL('./data/gridDummy.json', location.protocol + '//' + location.host + location.pathname).href;
+const dataGrid_path = new URL(
+  './data/gridDummy.json',
+  location.protocol + '//' + location.host + location.pathname
+).href;
 
 fetch(dataGrid_path)
-  .then(res => res.json())
-  .then(json_data => {
+  .then((res) => res.json())
+  .then((json_data) => {
     // const json = JSON.parse(json_data);
     // console.log(typeof json_data);
     // console.log(json_data);
@@ -126,8 +141,6 @@ fetch(dataGrid_path)
     let parse = convertGrid(grid);
     //setHTML(parse);
   });
-
-
 
 function jsonParse(raw) {
   let json = new Array();
@@ -147,9 +160,7 @@ function setConvert(array) {
   return itu;
 }
 
-
 function convertGrid(raw_json) {
-
   let json_array = setConvert(jsonParse(raw_json));
   let inner = '';
   //console.log(json_array);
@@ -163,7 +174,6 @@ function convertGrid(raw_json) {
   return inner;
 }
 
-
 function setHTML(inner) {
   const ele = document.createElement('div');
   ele.classList.add('container');
@@ -174,7 +184,7 @@ function setHTML(inner) {
 function jsonDump(raw_json) {
   const header = Object.keys(raw_json[0]);
   const json_array = new Array();
-  json_array.push(header)
+  json_array.push(header);
   // xxx: `for` で回さんでもいけるやろ 😡
   for (let person_data of raw_json) {
     json_array.push(Object.values(person_data));
@@ -215,12 +225,13 @@ function get_tbodyTable(body) {
   return inner;
 }
 
-
-const sampleURI = new URL('./data/sample.json', location.protocol + '//' + location.host + location.pathname).href;
+const sampleURI = new URL(
+  './data/sample.json',
+  location.protocol + '//' + location.host + location.pathname
+).href;
 fetch(sampleURI)
-  .then(res => res.json())
-  .then(json_data => {
+  .then((res) => res.json())
+  .then((json_data) => {
     //console.log(json_data);
     // console.log(JSON.parse(json_data));
   });
-
