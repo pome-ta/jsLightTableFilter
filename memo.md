@@ -6,7 +6,6 @@
 
 for文と、`Areay.map()` やらの使い分け
 
-
 # 📝 2022/03/22
 
 json のオブジェクトをコネコネしたけど、設計これでいいのかな？メモリとか、爆食いしてる？
@@ -20,7 +19,6 @@ async function res_json(uri) {
 }
 ```
 
-
 ``` old.js
 async function res_json(uri) {
   const res = await fetch(uri);
@@ -32,9 +30,7 @@ async function res_json(uri) {
 }
 ```
 
-
 まぁ、for文のインデントよりすっきり？
-
 
 # 📝 2022/03/21
 
@@ -42,20 +38,16 @@ async function res_json(uri) {
 
 class化したりしてみる
 
-
-
-
 # 📝 2022/03/16
 
 ## 変更想定
 
 - 事前準備されているテーブルを可変できるように
-    - テーブル以外でも対応できるように
+  - テーブル以外でも対応できるように
 - `Array`
-    - `Array.prototype` と、呼ぶことやめたい
-    - `forEach.call` 多発を回避
+  - `Array.prototype` と、呼ぶことやめたい
+  - `forEach.call` 多発を回避
 - 表示されてるものをモダンに
-
 
 ## 順番
 
@@ -66,12 +58,9 @@ class化したりしてみる
 1. 表示
 1. テーブル以外
 
-
-
 # 📝 2022/03/15
 
 ## 基の設計
-
 
 1. あらかじめ(`.html` 上で)完成してるテーブル
 1. DOM が完成し`readyState` が、`complete`
@@ -82,8 +71,6 @@ class化したりしてみる
 1. `input` イベントが走る
     - 入力情報から、テーブル内を検索
     - 検索にかからないものを`none` で非表示
-
-
 
 [readystatechange](https://developer.mozilla.org/ja/docs/Web/API/Document/readystatechange_event)
 
